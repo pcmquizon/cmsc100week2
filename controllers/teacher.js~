@@ -1,0 +1,9 @@
+// /controllers/teacher.js
+
+exports.find = function(req,res){
+ res.send('this is get method');
+};
+
+exports.add = function(req,res){
+ res.send('this is post method');
+};

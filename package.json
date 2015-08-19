@@ -1,0 +1,16 @@
+{
+  "name": "cmsc100week2",
+  "version": "0.0.1",
+  "description": "simple nodejs application",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Pia Carmela M. Quizon",
+  "license": "BSD-2-Clause",
+  "dependencies": {
+    "express": "~4.13.3",
+    "body-parser": "~1.13.3",
+    "method-override": "~2.3.5"
+  }
+}
