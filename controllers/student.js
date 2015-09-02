@@ -7,7 +7,9 @@ var db = require(__dirname+'/../lib/mysql');
 // res.send('Hello World'); in localhost:5000/students
 
 //retrieve all
-exports.find = function(req,res,next){ 
+exports.find = function(req,res,next){
+	console.log(req.ip+" find()");	//must be in first line of function
+	
 	 db.query("SELECT * FROM student", function(err, rows){ //for error handling (err)
 	 	if(err) return next(err);	//next(err) --> skip all route handlers 
 	 	res.send(rows);
@@ -18,6 +20,8 @@ exports.find = function(req,res,next){
 //query itself, last 2 other stuff you'll need
 //[req.params.id] gets the id in  router.route('/students/:id')
 exports.findOne = function(req,res,next){ 
+	console.log(req.ip+" findOne()");
+	
 	 db.query("SELECT * FROM student WHERE id=?", [req.params.id], function(err, rows){
 	 	if(err) return next(err);
 	 	if(rows.length===0) res.status(404).send('Student not found.');
@@ -27,6 +31,7 @@ exports.findOne = function(req,res,next){
 
 //info client sent
 exports.insert = function(req,res,next){ 
+	console.log(req.ip+" insert()");
 	 db.query("INSERT INTO student(studno,name) VALUES (?,?)", [req.body.studno, req.body.name], function(err, rows){
 	 	if(err) return next(err);
 	 	res.send(rows);
@@ -36,13 +41,15 @@ exports.insert = function(req,res,next){
 //in adv rest client http://localhost:5000/students/id param 1 will be used in id=?
 // SET ? for colname=value pairing
 exports.update = function(req,res,next){ 
+	console.log(req.ip+" update()");
 	 db.query("UPDATE student SET ? WHERE id=?", [req.body, req.params.id], function(err, rows){
 	 	if(err) return next(err);
 	 	res.send(rows);
 	 });
 };
 
-exports.remove = function(req,res,next){ 
+exports.remove = function(req,res,next){
+	console.log(req.ip+" remove()");
 	 db.query("DELETE FROM student WHERE id=?", [req.params.id], function(err, rows){
 	 	if(err) return next(err);
 		res.send(rows);
