@@ -53,11 +53,14 @@ describe('student', function(){
 			request(url)
 			.post('/students')
 			.send(studrec)
-			studrec.should.have.Property('name','Betel');
-			studrec.should.have.Property('studno','2007-12345');
 			.end(function(err,res){
 				if(err) throw err;
 				res.should.have.status(200);
+				res.body.should.be.an.instanceOf(Object);
+				res.body.should.have.property('id');
+				res.body.should.have.property('name', 'Betel');
+				res.body.should.have.property('studno', '2007-12345');
+				res.should.have.property('studno').with.lengthOf(10);
 				done();
 			})
 			
