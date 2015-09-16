@@ -11,6 +11,8 @@ app.use(require('body-parser')());
 app.use(require('method-override')());
 app.use(require(__dirname+'/config/router')(express.Router())); // __dirname -> where running script is located
 
+app.use(express.static(__dirname+'/public'));	//static pages found in public folder
+
 //what the modules do
 //body-parser -> accept input from user
 //method-override -> have put & delete methods 

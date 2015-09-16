@@ -1,3 +1,8 @@
+//for cmsc131 .asm highlight mode http://stackoverflow.com/questions/17003401/gedit-syntax-highlighting-for-assembler-files-asm
+//chrome extension -> advanced rest client
+//for lolcode syntax highlights https://gist.github.com/Lucki/2409d96cae36e1856ef8
+
+
 var express = require('express');
 var app = express(); //instance of express
 
@@ -5,6 +10,8 @@ var app = express(); //instance of express
 app.use(require('body-parser')());
 app.use(require('method-override')());
 app.use(require(__dirname+'/config/router')(express.Router())); // __dirname -> where running script is located
+
+app.use(express.static(__dirname+'/public'));
 
 //what the modules do
 //body-parser -> accept input from user

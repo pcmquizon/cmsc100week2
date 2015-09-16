@@ -1,0 +1,48 @@
+<!DOCTYPE html> 
+<html>			
+	<head>
+		<title>
+			cmsc100week2 home page
+		</title>
+		<meta charset="utf-8"/> 
+	</head>
+	
+	<body>
+	
+		<!-- 
+			form
+				method=""
+				form has get and post method
+				if get, payload is seen in url
+				else if post, payload is not seen in url, hidden somewhere in request
+			
+				action=""
+				action's value is usually a web server
+				
+			input
+				type="" -> text, submit, radio, checkbox, color, email, number, date, range, password
+					by default type is text
+				name=""
+					must be the exact name in your database
+				placeholder="" ->something greyed out
+				pattern="" -> new, backslash works, do regex
+				required="", do not use 'required' alone
+				
+				if
+					type="submit"
+					value="text on button"
+					
+		-->
+	
+	
+		<form method="POST" action="http://localhost:5000/students">
+			<input type="text" name="studno" placeholder="Student number" pattern="^[0-9]{4}-\d{5}$" required=""/><br/>
+			<input type="password" name="name" placeholder="Name" required=""/><br/>
+			
+			<input type="submit" value="Create"/>
+			
+		</form>
+	
+	</body>
+	
+</html>

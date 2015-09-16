@@ -31,6 +31,8 @@ exports.findOne = function(req,res,next){
 
 //info client sent
 exports.insert = function(req,res,next){ 
+	console.log(req.ip+" insert()");
+	console.log(req.body+" \n"); //has auto new line????
 	 db.query("INSERT INTO student(studno,name) VALUES (?,?)", [req.body.studno, req.body.name], function(err, rows){
 	 	if(err) return next(err);
 	 	res.send(rows);
@@ -40,13 +42,15 @@ exports.insert = function(req,res,next){
 //in adv rest client http://localhost:5000/students/id param 1 will be used in id=?
 // SET ? for colname=value pairing
 exports.update = function(req,res,next){ 
+	console.log(req.ip+" update()");
 	 db.query("UPDATE student SET ? WHERE id=?", [req.body, req.params.id], function(err, rows){
 	 	if(err) return next(err);
 	 	res.send(rows);
 	 });
 };
 
-exports.remove = function(req,res,next){ 
+exports.remove = function(req,res,next){
+	console.log(req.ip+" remove()");
 	 db.query("DELETE FROM student WHERE id=?", [req.params.id], function(err, rows){
 	 	if(err) return next(err);
 		res.send(rows);

@@ -32,6 +32,7 @@ exports.findOne = function(req,res,next){
 //info client sent
 exports.insert = function(req,res,next){ 
 	console.log(req.ip+" insert()");
+	console.log(req.body+" \n"); //has auto new line at start????
 	 db.query("INSERT INTO student(studno,name) VALUES (?,?)", [req.body.studno, req.body.name], function(err, rows){
 	 	if(err) return next(err);
 	 	res.send(rows);
